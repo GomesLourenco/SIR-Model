@@ -1,11 +1,11 @@
- from matplotlib import pyplot as plt
+from matplotlib import pyplot as plt
 susceptible_list = [99]
 infected_list = [1]
 recoverd_list = [0]
 
-b = 3
-y =  1/14
-h = 0.0001
+b = 0.1/14
+y = 1/14
+h = 0.01
 
 def susceptible_n_plus_1(susceptible_list, infected_list, b,current_time,h):
     value = -b*susceptible_list[current_time-1]*infected_list[current_time-1]*h + susceptible_list[current_time - 1]
@@ -20,7 +20,7 @@ def recoverd_n_plus_1(infected_list, y, current_time, h,recoverd_list):
     recoverd_list.append(value)
     return recoverd_list
 
-for i in range(1000):
+for i in range(10000):
     susceptible_n_plus_1(susceptible_list, infected_list, b, i,h)
     infected_n_plus_1(susceptible_list, infected_list, b, y, i, h)
     recoverd_n_plus_1(infected_list, y, i, h, recoverd_list)
